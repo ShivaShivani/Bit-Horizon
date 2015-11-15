@@ -7,4 +7,5 @@ angular.module("app", [])
 
     })
     .controller("SignUpCtrl", function () {
+
     });
