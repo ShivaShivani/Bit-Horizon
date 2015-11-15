@@ -34,12 +34,14 @@
     <![endif]-->
 
     <!-- Modernizr Scripts -->
+    <script src="javascript/vendor/angular.js"></script>
     <script src="javascript/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="javascript/app/controllers.js"></script>
   </head>
-  <body class="sign-in-up" id="to-top">
+  <body class="sign-in-up" id="to-top" ng-app="app">
 
     <!-- Sign In/Sign Up section -->
-    <section class="sign-in-up-section">
+    <section class="sign-in-up-section" ng-controller="SignUpCtrl">
 
       <div class="container">
 

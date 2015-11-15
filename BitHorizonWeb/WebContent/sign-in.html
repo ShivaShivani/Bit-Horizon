@@ -17,7 +17,8 @@
     <meta name="keywords" content="">
     <meta name="author" content="">
     <meta name="googlebot" content="index,follow">
-    <meta name="google-signin-client_id" content="131074547078-con26cc0j85hblnv1t22pj1jkom35t2b.apps.googleusercontent.com">
+    <meta name="google-signin-client_id"
+          content="131074547078-con26cc0j85hblnv1t22pj1jkom35t2b.apps.googleusercontent.com">
     <meta name="google-signin-scope" content="profile email">
     <!-- Title -->
     <title>Sign in</title>
@@ -41,9 +42,11 @@
     <![endif]-->
 
     <!-- Modernizr Scripts -->
+    <script src="javascript/vendor/angular.js"></script>
     <script src="javascript/vendor/modernizr-2.7.1.min.js"></script>
+    <script src="javascript/app/controllers.js"></script>
 </head>
-<body class="sign-in-up" id="to-top">
+<body class="sign-in-up" id="to-top" ng-app="app">
 
 <!-- Sign In/Sign Up section -->
 <section class="sign-in-up-section">
@@ -68,56 +71,51 @@
         </div>
         <!-- /.row -->
 
-        <section class="sign-in-up-content">
-
+        <section class="sign-in-up-content" ng-controller="SignInCtrl">
             <div class="row">
-
                 <div class="col-md-12">
-
                     <h4 class="text-center">Sign In to your account</h4>
-
                     <br class="sign-in-up-form" action="./sign-in.html" role="form">
 
-                        <!-- Input 1 -->
-                        <div class="form-group">
-                            <input class="form-control" id="exampleInputEmail2" type="email"
-                                   placeholder="Enter email address">
-                        </div>
-                        <!-- /.form-group -->
+                    <!-- Input 1 -->
+                    <div class="form-group">
+                        <input class="form-control" id="exampleInputEmail2" type="email"
+                               placeholder="Enter email address">
+                    </div>
+                    <!-- /.form-group -->
+                    <!-- Input 2 -->
+                    <div class="form-group">
+                        <input class="form-control" id="exampleInputPassword1" type="password"
+                               placeholder="Password">
+                    </div>
+                    <!-- /.form-group -->
 
-                        <!-- Input 2 -->
-                        <div class="form-group">
-                            <input class="form-control" id="exampleInputPassword1" type="password"
-                                   placeholder="Password">
-                        </div>
-                        <!-- /.form-group -->
-
-                        <!-- Sign in Button -->
-                        <div class="form-group">
-                            <a class="btn btn-success btn-block" href="./home.html">Sign In</a>
-                        </div>
-                        <!-- Sign in Twitter Button -->
-                        <div class="form-group">
-                            <a class="btn btn-block btn-social btn-twitter" href="./home.html">
-                                <span class="fa fa-twitter"></span> Sign in with Twitter
-                            </a>
-                        </div>
-                        <!-- Sign in Facebook Button -->
-                        <div class="form-group">
-                            <a class="btn btn-block btn-social btn-facebook" href="./home.html">
-                                <span class="fa fa-facebook"></span> Sign in with Facebook </a>
-                        </div>
-                        <div class="form-group">
-                            <a class="btn btn-block btn-social btn-google" data-onsuccess="onSignIn"  href="./home.html">
-                                <span class="fa fa-google-plus"></span> Sign in with google </a>
-                        </div>
-                        <br></br>
-                        <!-- Sign In/Sign Up links -->
-                        <section class="sign-in-up-links text-center">
-                            <p><a href="./forgot-password.html">Forgot password?</a> <span class="sep">&ndash;</span> <a
-                                    href="./sign-up.html">Need an account?</a></p>
-                        </section>
-                        <!-- /.sign-in-up-links -->
+                    <!-- Sign in Button -->
+                    <div class="form-group">
+                        <a class="btn btn-success btn-block" href="./home.html">Sign In</a>
+                    </div>
+                    <!-- Sign in Twitter Button -->
+                    <div class="form-group">
+                        <a class="btn btn-block btn-social btn-twitter" href="./home.html">
+                            <span class="fa fa-twitter"></span> Sign in with Twitter
+                        </a>
+                    </div>
+                    <!-- Sign in Facebook Button -->
+                    <div class="form-group">
+                        <a class="btn btn-block btn-social btn-facebook" href="./home.html">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook </a>
+                    </div>
+                    <div class="form-group">
+                        <a class="btn btn-block btn-social btn-google" data-onsuccess="onSignIn" href="./home.html">
+                            <span class="fa fa-google-plus"></span> Sign in with google </a>
+                    </div>
+                    <br></br>
+                    <!-- Sign In/Sign Up links -->
+                    <section class="sign-in-up-links text-center">
+                        <p><a href="./forgot-password.html">Forgot password?</a> <span class="sep">&ndash;</span> <a
+                                href="./sign-up.html">Need an account?</a></p>
+                    </section>
+                    <!-- /.sign-in-up-links -->
 
                     </form>
                     <!-- /.sign-in-up-form -->
