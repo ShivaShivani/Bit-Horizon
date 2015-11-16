@@ -18,5 +18,9 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bson-3.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mongodb-driver-3.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mongodb-driver-core-3.1.0.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/restfb-1.16.0.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
