@@ -212,7 +212,7 @@
         $.post("http://10.205.0.122:9080/BitHorizonWeb/api/user/login", params, function(data) {
             console.log(data);
             if(data.success) {
-                location.href = "home.html";
+                location.href = "./home.html";
             } else {
                 alert("Sorry error logging in");
             }
