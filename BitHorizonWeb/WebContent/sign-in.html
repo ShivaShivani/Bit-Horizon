@@ -34,6 +34,7 @@
 
     <link href="stylesheets/font-awesome.css" rel="stylesheet">
     <link href="stylesheets/bootstrap-social.css" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="http://connect.facebook.net/en_US/all.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,6 +48,7 @@
     <script src="javascript/app/controllers.js"></script>
 
     <script src="javascript/app/fb.js"></script>
+    <script src="javascript/app/google.js"></script>
 
     <script>
         window.fbAsyncInit = function () {
@@ -126,22 +128,25 @@
                         <a class="btn btn-success btn-block" href="./home.html">Sign In</a>
                     </div>
                     <!-- Sign in Twitter Button -->
-                    <div class="form-group">
-                        <a class="btn btn-block btn-social btn-twitter" href="./home.html">
-                            <span class="fa fa-twitter"></span> Sign in with Twitter
-                        </a>
-                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<a class="btn btn-block btn-social btn-twitter" ng-click="connectButton()" href="./home.html">-->
+                            <!--<span class="fa fa-twitter"></span> Sign in with Twitter-->
+                        <!--</a>-->
+                    <!--</div>-->
                     <!-- Sign in Facebook Button -->
-                    <div class="form-group">
-                        <fb:login-button class="btn btn-block btn-social btn-facebook" scope="public_profile,email"
+                    <div align="center" class="form-group">
+                        <fb:login-button   scope="public_profile,email"
                                          onlogin="checkLoginState();">
                             <span class="fa fa-facebook"></span> Sign in with Facebook
                         </fb:login-button>
                     </div>
-                    <div class="form-group">
-                        <a class="btn btn-block btn-social btn-google" data-onsuccess="onSignIn" href="./home.html">
-                            <span class="fa fa-google-plus"></span> Sign in with google </a>
-                    </div>
+                    <!--<div class="form-group">-->
+                    <div align="center" class="g-signin2"  data-onsuccess="onSignIn" data-theme="dark"></div>
+
+                    <!--<div class="g-signin2" align="center" data-onsuccess="onSignIn();" data-theme="dark"></div>-->
+                        <!--<a class="g-signin2"  data-onsuccess="onSignIn"class="btn btn-block btn-social btn-google" data-onsuccess="onSignIn" href="./home.html">-->
+                            <!--<span class="fa fa-google-plus"></span> Sign in with google </a>-->
+                    <!--</div>-->
                     <br></br>
                     <!-- Sign In/Sign Up links -->
                     <section class="sign-in-up-links text-center">
@@ -187,6 +192,33 @@
 
 </section>
 <!-- /.sign-in-up-section -->
+<script>
+    function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log("Name: " + profile.getName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+
+        var params = id_token;
+        params.src = "Google";
+        console.log(params);
+
+        $.post("http://10.205.0.122:9080/BitHorizonWeb/api/user/login", params, function(data) {
+            console.log(data);
+            if(data.success) {
+                location.href = "home.html";
+            } else {
+                alert("Sorry error logging in");
+            }
+        });
+    }
+</script>
 
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="javascript/vendor/jquery-2.1.0.min.js"></script>
