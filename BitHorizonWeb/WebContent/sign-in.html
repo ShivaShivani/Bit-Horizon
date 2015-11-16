@@ -8,7 +8,7 @@
 <html class="ie8" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!-->
 <html lang="en"> <!--<![endif]-->
-<head>
+<head ng-app="app" ng-controller="SignInCtrl">
 
     <!-- Meta -->
     <meta charset="utf-8">
@@ -34,7 +34,7 @@
 
     <link href="stylesheets/font-awesome.css" rel="stylesheet">
     <link href="stylesheets/bootstrap-social.css" rel="stylesheet">
-
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -45,8 +45,39 @@
     <script src="javascript/vendor/angular.js"></script>
     <script src="javascript/vendor/modernizr-2.7.1.min.js"></script>
     <script src="javascript/app/controllers.js"></script>
+
+    <script src="javascript/app/fb.js"></script>
+
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '1086458061386751',
+                cookie: true,  // enable cookies to allow the server to access
+                               // the session
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.2' // use version 2.2
+            });
+
+            // Now that we've initialized the JavaScript SDK, we call
+            // FB.getLoginStatus().  This function gets the state of the
+            // person visiting this page and can return one of three states to
+            // the callback you provide.  They can be:
+            //
+            // 1. Logged into your app ('connected')
+            // 2. Logged into Facebook, but not your app ('not_authorized')
+            // 3. Not logged into Facebook and can't tell if they are logged into
+            //    your app or not.
+            //
+            // These three cases are handled in the callback function.
+
+            FB.getLoginStatus(function (response) {
+                statusChangeCallback(response);
+            });
+        };
+    </script>
+
 </head>
-<body class="sign-in-up" id="to-top" ng-app="app">
+<body class="sign-in-up" id="app-body">
 
 <!-- Sign In/Sign Up section -->
 <section class="sign-in-up-section">
@@ -71,7 +102,7 @@
         </div>
         <!-- /.row -->
 
-        <section class="sign-in-up-content" ng-controller="SignInCtrl">
+        <section class="sign-in-up-content">
             <div class="row">
                 <div class="col-md-12">
                     <h4 class="text-center">Sign In to your account</h4>
@@ -102,8 +133,10 @@
                     </div>
                     <!-- Sign in Facebook Button -->
                     <div class="form-group">
-                        <a class="btn btn-block btn-social btn-facebook" href="./home.html">
-                            <span class="fa fa-facebook"></span> Sign in with Facebook </a>
+                        <fb:login-button class="btn btn-block btn-social btn-facebook" scope="public_profile,email"
+                                         onlogin="checkLoginState();">
+                            <span class="fa fa-facebook"></span> Sign in with Facebook
+                        </fb:login-button>
                     </div>
                     <div class="form-group">
                         <a class="btn btn-block btn-social btn-google" data-onsuccess="onSignIn" href="./home.html">
@@ -116,6 +149,9 @@
                                 href="./sign-up.html">Need an account?</a></p>
                     </section>
                     <!-- /.sign-in-up-links -->
+                    <div id="status">
+                    </div>
+
 
                     </form>
                     <!-- /.sign-in-up-form -->
