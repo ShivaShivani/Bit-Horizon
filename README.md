@@ -16,7 +16,7 @@ Technologies:-
 
     -> We have pulled the users info regarding the artists he likes from the facebook to provide suggestions to a new user.
 
-    -> We have collected various tweets based on the #NowPlaying hash tag and used NLP to find the songs and artists name out of the whole tweet.
+    -> We have collected various tweets, likes, retweets, users based on the #NowPlaying hash tag and used NLP to find the songs and artists name out of the whole tweet.We have performed Sentiment Analysis on the tweets and based on that we are suggesting the songs.
 
     -> Once the tweets are collected we have written algorithem to find the top 10 trending songs based on the number of tweets, likes and retweets a song has got.
 
