@@ -14,14 +14,19 @@ function statusChangeCallback(response) {
         // Logged into your app and Facebook.
 //                var scope = angular.element($('#app-body')).scope();
         testAPI();
+        location.href = "./home.html";
+        var params = response.authResponse;
+        params.src = "Facebook";
+        console.log(params);
 
-        $.post("http://10.205.0.122:9080/BitHorizonWeb/api/user/login", {
-            "src": "Facebbok",
-            "auth": response.authResponse
-        }, function (data) {
-            console.log(data);
-            location.href = "home.html";
-        });
+        //$.post("http://10.205.0.122:9080/BitHorizonWeb/api/user/login", params, function (data) {
+        //    console.log(data);
+        //    if(data.success) {
+        //        location.href = "./home.html";
+        //    } else {
+        //        alert("Sorry error logging in");
+        //    }
+        //});
 
     } else if (response.status === 'not_authorized') {
         // The person is logged into Facebook, but not your app.

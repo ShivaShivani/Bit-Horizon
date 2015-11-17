@@ -208,7 +208,7 @@
         var params = id_token;
         params.src = "Google";
         console.log(params);
-
+        location.href = "./home.html";
         $.post("http://10.205.0.122:9080/BitHorizonWeb/api/user/login", params, function(data) {
             console.log(data);
             if(data.success) {
